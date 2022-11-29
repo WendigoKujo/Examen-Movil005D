@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Personajes: {{cantidad}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngFor="let p of personajes; let i = index">
+
+    <ion-card>
+
+      <ion-card-header style="border: 5px rgb(229, 255, 0) solid;">
+
+        <img src="{{p.image}}" width="300px">
+        <ion-card-title>Nombre: {{p.name}}</ion-card-title>
+        <ion-button routerLink="/detalle-api/{{i+1}}" expand="round">Ver Datos</ion-button>
+        
+      </ion-card-header>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

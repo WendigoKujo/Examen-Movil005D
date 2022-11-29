@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>qr</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <form [formGroup]="clase" (ngSubmit)="registrar(this.clase.controls.codigo_asig.value)">
+
+      <ion-card style="border: 5px white solid;">
+
+        <ion-card-content>
+
+          <ion-item color="purple">
+            <ion-select placeholder="Seleccione Asignatura" formControlName="codigo_asig">
+              <ion-list *ngFor="let a of asignaturas">
+                <div *ngIf="a.profesor == profesor.id;">
+                  <ion-select-option value="{{a.id}}">{{a.nombre_asig}}</ion-select-option>
+                </div>
+              </ion-list>
+            </ion-select>
+          </ion-item>
+
+          <ion-button *ngIf="this.clase.controls.codigo_asig.value != ''" color="warning" type="submit" [disabled]="!clase.valid">Iniciar Clase</ion-button>
+
+          <div class="qr">
+
+            <ngx-qrcode [elementType]="elementType" [value]="this.clase.controls.id.value"></ngx-qrcode>
+
+          </div>
+
+        </ion-card-content>
+
+      </ion-card>
+
+    </form>
+
+  </div>
+
+</ion-content>

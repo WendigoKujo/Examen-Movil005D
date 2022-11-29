@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="purple">
+
+    <ion-title color="warning">Login</ion-title>
+
+    <ion-buttons slot="start">
+
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="fondo">
+
+    <form [formGroup]="estudiante" (ngSubmit)="login()">
+
+      <ion-card>
+
+        <ion-card-content>
+
+          <img src="../../../assets/img/Duoc2.png" alt="imagen_login" class="imagen_login">
+
+          <ion-item color="purple">
+
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input type="text" placeholder="Ingrese su Correo" formControlName="correo"></ion-input>
+
+          </ion-item>
+          
+          <ion-item color="purple">
+
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" placeholder="Ingrese su contraseña" formControlName="password"></ion-input>
+            
+          </ion-item>
+
+          <ion-button type="submit" expand="round" [disabled]="!estudiante.valid" id="btn_login">Ingresar</ion-button>
+          
+          <br>
+          <br>
+
+          <a routerLink="/recuperar">Olvidó su Contraseña?</a>
+          <br>
+          <a routerLink="/api">Revisar API</a>
+
+        </ion-card-content>
+
+      </ion-card>
+
+    </form>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,31 @@
+ion-title{
+
+    text-align: center;
+
+}
+
+ion-toolbar{
+
+    background-color: var(--ion-color-purple);
+
+}
+
+ion-list{
+    
+    background: linear-gradient(rgb(229, 255, 0),#a83be3);
+    height: 100%;
+
+    ion-item{
+
+        --color: var(--ion-color-dark);
+
+    }
+
+    ion-label{
+
+        font-size: large;
+        font-weight: bold;
+
+    }
+
+}

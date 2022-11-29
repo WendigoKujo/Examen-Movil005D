@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="purple">
+
+    <ion-title color="warning">Alumno</ion-title>
+    <ion-button slot="end" routerLink="/login" color="warning" (click)="logOut()">Cerrar Sesion</ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <ion-card style="border: 5px white solid;">
+
+      <ion-card-header>
+        <ion-card-title color="dark" style="font-size: xx-large;">Rut: {{usuario.rut}}</ion-card-title>
+        <ion-card-subtitle color="dark" style="font-size: x-large;">Nombre Alumno: {{usuario.nombre}} {{usuario.apellido}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content color="dark" style="font-size: large;">
+        Correo: {{usuario.correo}}
+        <br>
+        Fecha De Nacimiento: {{usuario.fecha_nac}}
+        <br>
+        Semestre: {{usuario.semestre}}
+        <br>
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
+</ion-content>

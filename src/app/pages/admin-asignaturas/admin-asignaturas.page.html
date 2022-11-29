@@ -1,0 +1,63 @@
+<ion-content>
+
+  <form [formGroup]="asignatura" (ngSubmit)="registrar()">
+
+    <ion-item color="purple">
+
+      <ion-label position="floating">Nombre Asignatura</ion-label>
+      <ion-input type="text" placeholder="Ingrese Asignatura" formControlName="nombre_asig"></ion-input>
+
+    </ion-item>
+
+    <ion-item color="purple">
+
+      <ion-label position="floating">Sigla Asignatura</ion-label>
+      <ion-input type="text" placeholder="Ingrese Sigla" formControlName="sigla"></ion-input>
+
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="!asignatura.valid" color="warning" expand="round">Registrar</ion-button>
+    <ion-button (click)="modificar()" color="warning" expand="round" [disabled]="!asignatura.valid || id_modificar == ''">Modificar</ion-button>
+    <ion-button (click)="limpiar()" color="warning" expand="round">Limpiar</ion-button>
+
+  </form>
+
+  <h5 style="margin-left: 10%; margin-left: 40%; font-size: xx-large;">Lista de Asignaturas</h5>
+
+  <div *ngIf="asignaturas.length != 0; else elseBlock">
+
+    <ion-list *ngFor="let a of asignaturas">
+
+      <div *ngIf="a.profesor == profesor.id;">
+
+        <ion-card color="black">
+
+          <ion-card-header style="border: 5px purple solid;" color="warning">
+            <ion-card-title style="font-size: x-large;">Sigla: {{a.sigla}}</ion-card-title>
+            <ion-card-subtitle style="font-size: large;">Nombre Asignatura: {{a.nombre_asig}}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content style="border: 5px yellow solid;" color="purple">
+          
+            Rut Profesor: {{profesor.rut}}
+            <br>
+            Profesor: {{profesor.nombre}} {{profesor.apellido}}
+            <br>
+            <ion-button color="success" (click)="buscar(a.id)" expand="round">Buscar</ion-button>
+            <ion-button color="danger" (click)="eliminar(a.id)" expand="round">Eliminar</ion-button>
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </div>
+
+    </ion-list>
+
+  </div>
+
+  <ng-template #elseBlock>
+    <h5>No hay Asignaturas Registradas :(</h5>
+  </ng-template>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "ExamenMovil",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="purple">
+    <ion-title>recuperar</ion-title>
+    <ion-button slot="end" routerLink="/login" expand="round"><ion-icon name="exit-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fondo">
+
+    <form [formGroup]="recuperar">
+
+      <ion-card>
+
+        <ion-card-content>
+
+          <ion-item color="purple">
+
+            <ion-label position="floating" >Ingrese su correo:  </ion-label>
+            <ion-input type="text" formControlName="correo"></ion-input>
+            
+          </ion-item>
+
+          <br>
+
+          <ion-button routerLink="/login" [disabled]="!recuperar.valid">Enviar correo</ion-button>
+
+        </ion-card-content>
+
+      </ion-card>
+
+    </form>
+
+  </div>
+</ion-content>

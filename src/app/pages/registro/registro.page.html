@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="purple">
+
+    <ion-title color="warning">Registro</ion-title>
+
+    <ion-buttons slot="start">
+
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="estudiante" (ngSubmit)="registrar()">
+    <ion-item color="purple">
+      <ion-label position="floating">Rut</ion-label>
+      <ion-input type="text"  placeholder="Ingrese rut: Ej: 1.111.111-1" formControlName="rut"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating" >Primer Nombre</ion-label>
+      <ion-input type="text"  placeholder="Ingrese su nombre" formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text"  placeholder="Ingrese su apellido" formControlName="apellido"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="text"  placeholder="Ingrese su correo" formControlName="correo"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating">Fecha De Nacimiento</ion-label>
+      <ion-input type="date"  placeholder="Seleccione su Fecha De Nacimiento" formControlName="fecha_nac"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating">Semestre</ion-label>
+      <ion-input type="number"  placeholder="Ingrese semestre" formControlName="semestre"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password"  placeholder="Ingrese Contraseña" formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-item color="purple">
+      <ion-label position="floating">Ingrese contraseña nuevamente</ion-label>
+      <ion-input type="password" placeholder="Ingrese contraseña nuevamente" [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="!estudiante.valid" color="warning" expand="round">REGISTRAR</ion-button>  
+
+  </form>
+  
+</ion-content>

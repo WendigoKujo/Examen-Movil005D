@@ -1,0 +1,39 @@
+ion-title{
+
+   text-align: center;
+
+}
+
+ion-toolbar{
+
+    background-color: var(--ion-color-purple);
+
+}
+
+form{
+    
+    background: linear-gradient(rgb(229, 255, 0),#a83be3);
+    height: 100%;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+
+
+ ion-item{
+
+    width: 50%;
+    margin-bottom: 10px;
+ }
+
+ ion-botton{
+
+    color: purple;
+
+ }
+
+}
+
+

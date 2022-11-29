@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar color="purple">
+    <ion-title slot="end">Bienvenido: {{ usuario.nombre + ' ' + usuario.apellido }}</ion-title>
+    
+    <ion-button slot="end" routerLink="/login" expand="round" color="warning" (click)="logOut()"><ion-icon name="exit-outline"></ion-icon></ion-button>
+    
+  </ion-toolbar>
+
+</ion-header> 
+
+<ion-content [fullscreen]="true">
+
+  <div class="fondo">
+
+  </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" color="purple">
+
+      <ion-tab-button tab="administrador/{{usuario.id}}" *ngIf="usuario.tipo_usuario == 'Admin'">
+        <ion-icon name="people-outline"></ion-icon>
+        <ion-label>Administrar Usuarios</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="alumno/{{usuario.id}}" *ngIf="usuario.tipo_usuario == 'Alumno'">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Perfil Alumno</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="asistencia/{{usuario.id}}" *ngIf="usuario.tipo_usuario == 'Alumno'">
+        <ion-icon name="today-outline"></ion-icon>
+        <ion-label>Asistencia</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profesor/{{usuario.id}}" *ngIf="usuario.tipo_usuario == 'Profesor'">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Perfil Profesor</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="admin-asignaturas/{{usuario.id}}" *ngIf="usuario.tipo_usuario == 'Profesor'">
+        <ion-icon name="server-outline"></ion-icon>
+        <ion-label>Administrar Asignaturas</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="qr/{{usuario.id}}" *ngIf="usuario.tipo_usuario == 'Profesor'">
+        <ion-icon name="reader-outline"></ion-icon>
+        <ion-label>Clases</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+    
+</ion-content>

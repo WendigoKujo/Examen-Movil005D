@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <ion-app>
+
+        <ion-card style="border: 5px white solid;">
+
+          <ion-card-content>
+
+            <ion-item color="purple" style="border: 5px purple solid;">
+
+              <ion-label position="floating">Ingrese el Codigo de la Clase</ion-label>
+              <ion-input type="text" [(ngModel)]="id_clase"></ion-input>
+
+            </ion-item>
+
+            <ion-button (click)="marcar()" expand="round">Quedar Presente</ion-button>
+
+          </ion-card-content>
+          
+        </ion-card>
+
+    </ion-app>
+
+  </div>
+
+</ion-content>
