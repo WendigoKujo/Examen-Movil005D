@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-asistencia',
@@ -18,7 +17,7 @@ export class AsistenciaPage implements OnInit {
   KEY_CLASES = 'clases'
   id_clase: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private storageService: StorageService, private toastController: ToastController, private fire: FireService) { }
+  constructor(private activatedRoute: ActivatedRoute, private toastController: ToastController, private fire: FireService) { }
 
   async ngOnInit() {
 

@@ -4,7 +4,6 @@ import { NavigationExtras, Router, RouterLink } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { v4 } from 'uuid';
 
@@ -28,7 +27,7 @@ export class LoginPage implements OnInit {
   isAuthenticated = new BehaviorSubject(false);
   v_ingresar: boolean = true;
 
-  constructor(private toastController: ToastController, private router: Router, private usuarioService: UsuarioService, private storage: StorageService, private fire: FireService) { }
+  constructor(private toastController: ToastController, private router: Router, private usuarioService: UsuarioService, private fire: FireService) { }
 
   async ngOnInit() {
     this.fire.getDatos(this.KEY_PERSONAS).subscribe(

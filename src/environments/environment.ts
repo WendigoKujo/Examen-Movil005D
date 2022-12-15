@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyAdkMegB3Y9igUvY5_rwnCGHbMA0A0tY80",
-    authDomain: "examen-movil005d-86f8d.firebaseapp.com",
-    projectId: "examen-movil005d-86f8d",
-    storageBucket: "examen-movil005d-86f8d.appspot.com",
-    messagingSenderId: "587136799254",
-    appId: "1:587136799254:web:3e8bfe350a0f98f0031b37"
+    apiKey: "AIzaSyDrm1sipLnWUII5lsSCtnfrsShQCAXhVIk",
+    authDomain: "examen-movil005d-a5948.firebaseapp.com",
+    projectId: "examen-movil005d-a5948",
+    storageBucket: "examen-movil005d-a5948.appspot.com",
+    messagingSenderId: "1043567836884",
+    appId: "1:1043567836884:web:152aedcd38f0c164cc0541"
   }
 };
 

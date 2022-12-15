@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-profesor',
@@ -15,7 +14,7 @@ export class ProfesorPage implements OnInit {
   KEY_PERSONAS = 'personas';
   v_log: boolean = true;
 
-  constructor(private activatedRoute: ActivatedRoute, private storageService: StorageService, private fire: FireService){ }
+  constructor(private activatedRoute: ActivatedRoute, private fire: FireService){ }
 
   async ngOnInit() {
 

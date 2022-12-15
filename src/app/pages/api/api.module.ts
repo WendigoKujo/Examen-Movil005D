@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ApiPageRoutingModule } from './api-routing.module';
 
 import { ApiPage } from './api.page';
+import { ActivatedRoute } from '@angular/router';
 
 @NgModule({
   imports: [

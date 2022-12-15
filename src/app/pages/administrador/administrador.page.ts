@@ -3,8 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
 import { ValidacionesService } from 'src/app/services/validaciones.service';
 import { v4 } from 'uuid';
 
@@ -35,12 +33,13 @@ export class AdministradorPage implements OnInit {
   id_modificar: any = '';
   id: any;
   v_registrar: boolean = false;
+  nombres: any[] = [];
+  results = [...this.nombres];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private toastController: ToastController, 
-    private validaciones: ValidacionesService, 
-    private storage: StorageService,
+    private validaciones: ValidacionesService,
     private alertController: AlertController,
     private fire: FireService
     ){}
@@ -50,7 +49,13 @@ export class AdministradorPage implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.cargarDatos();
     this.estudiante.controls.id.setValue(v4());
+    this.cargarNombres();
 
+  }
+
+  handleChange(event) {
+    const query = event.target.value.toLowerCase();
+    this.results = this.nombres.filter(d => d.toLowerCase().indexOf(query) > -1);
   }
 
   cargarDatos(){
@@ -67,7 +72,26 @@ export class AdministradorPage implements OnInit {
     )
   }
 
+  cargarNombres(){
+
+    this.fire.getDatos(this.KEY_PERSONAS).subscribe(
+
+
+        data => {
+          this.nombres = [];
+          for (let usuario of data){
+            let usu = usuario.payload.doc.data();
+            usu['id'] = usuario.payload.doc.id;
+            this.nombres.push(usu['nombre']);
+          }
+        }
+    )
+
+  }
+
   async registrar(){
+
+    this.v_registrar = true;
 
     if (!this.validaciones.validarRut(this.estudiante.controls.rut.value)) {
       this.tostadaError('Rut Incorrecto!');
@@ -115,7 +139,6 @@ export class AdministradorPage implements OnInit {
     var registrado = this.fire.agregar(this.KEY_PERSONAS, this.estudiante.controls.id.value, this.estudiante.value);
     if (registrado) {
       this.tostadaError('Usuario Registrado con exito!');
-      this.v_registrar = true;
       this.limpiar();
       this.estudiante.controls.id.setValue(v4());
       this.cargarDatos();
@@ -171,6 +194,24 @@ export class AdministradorPage implements OnInit {
 
     if (this.verificar_password == this.estudiante.controls.password.value) {
       
+      if (!this.validaciones.validarEdad(17, this.estudiante.controls.fecha_nac.value)) {
+        this.tostadaError('Edad minima 17 años!');
+      };
+      if (!this.validaciones.validarRut(this.estudiante.controls.rut.value)) {
+        this.tostadaError('Rut Incorrecto!');
+        return;
+      };
+      if (this.estudiante.controls.password.value != this.verificar_password) {
+        this.tostadaError('Las contraseñas no coinciden!');
+        return;
+      };
+      if (this.estudiante.controls.nombre.value.trim() == '') {
+        this.tostadaError('El Nombre no puede estar en blanco!');
+        return;
+      }else if(this.estudiante.controls.apellido.value.trim() == ''){
+        this.tostadaError('El Apellido no puede estar en blanco!');
+        return;
+      };
       this.fire.modificar(this.KEY_PERSONAS, this.id_modificar, usu);
       this.tostadaError('Usuario Modificado Con Exito!')
       this.estudiante.reset();
@@ -187,6 +228,7 @@ export class AdministradorPage implements OnInit {
   limpiar(){
     this.estudiante.reset();
     this.verificar_password = '';
+    this.estudiante.controls.id.setValue(v4());
   }
 
   async tostadaError(message) {

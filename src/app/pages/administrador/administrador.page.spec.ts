@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { AdministradorPage } from './administrador.page';
 
@@ -12,7 +13,9 @@ describe('PRUEBA UNITARIAS: Administrador', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [
         AdministradorPage
@@ -41,7 +44,7 @@ describe('PRUEBA UNITARIAS: Administrador', ()=>{
     let apellido = app.estudiante.controls['apellido'];
     apellido.setValue('Gajardo');
     let correo = app.estudiante.controls['correo'];
-    correo.setValue('alan.gajardo');
+    correo.setValue('alan.gajardo@profesor.duoc.cl');
     let fecha_nac = app.estudiante.controls['fecha_nac'];
     fecha_nac.setValue('2003-01-30');
     let semestre = app.estudiante.controls['semestre'];

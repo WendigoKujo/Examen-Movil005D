@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
 
 @Component({
@@ -30,7 +29,7 @@ export class AdminAsignaturasPage implements OnInit {
   id_modificar: any = '';
   v_registrar: boolean = false;
 
-  constructor(private storageService: StorageService, private toastController: ToastController, private activatedRoute: ActivatedRoute, private alertController: AlertController, private fire: FireService) { }
+  constructor(private toastController: ToastController, private activatedRoute: ActivatedRoute, private alertController: AlertController, private fire: FireService) { }
 
   async ngOnInit() {
 
@@ -63,6 +62,8 @@ export class AdminAsignaturasPage implements OnInit {
 
   async registrar(){
 
+    this.v_registrar = true;
+
     if (this.asignatura.controls.nombre_asig.value.trim() == '') {
       this.tostadaError('La asignatura no puede estar en blanco!');
       return;
@@ -82,7 +83,6 @@ export class AdminAsignaturasPage implements OnInit {
 
     this.fire.agregar(this.KEY_ASIGNATURAS, this.asignatura.controls.id.value, this.asignatura.value)
     this.tostadaError('Asignatura registrada con exito!');
-    this.v_registrar = true;
     this.asignatura.reset();
     this.asignatura.controls.id.setValue(v4());
     this.asignatura.controls.profesor.setValue(this.id_profesor);
@@ -107,6 +107,7 @@ export class AdminAsignaturasPage implements OnInit {
           handler: async() => {
             this.fire.eliminar(this.KEY_ASIGNATURAS, identificador);
             this.tostadaError('Asignatura Eliminada!');
+            this.asignatura.controls.id.setValue(v4());
             this.cargarDatos();
           },
         },
@@ -134,7 +135,7 @@ export class AdminAsignaturasPage implements OnInit {
 
     let asig = this.asignatura.value;
 
-    this.fire.modificar(this.KEY_ASIGNATURAS, this.id_modificar, this.asignatura.value);
+    this.fire.modificar(this.KEY_ASIGNATURAS, this.id_modificar, asig);
     this.tostadaError('Asignatura Modificada!');
     this.asignatura.reset();
     this.asignatura.controls.id.setValue(v4());
@@ -145,6 +146,7 @@ export class AdminAsignaturasPage implements OnInit {
   limpiar(){
 
     this.asignatura.reset();
+    this.asignatura.controls.id.setValue(v4());
 
   }
 

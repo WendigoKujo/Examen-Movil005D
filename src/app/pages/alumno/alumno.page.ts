@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-alumno',
@@ -16,7 +15,7 @@ export class AlumnoPage implements OnInit {
   v_log: boolean = false;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private storageService: StorageService, private fire: FireService) { }
+  constructor(private activatedRoute: ActivatedRoute, private fire: FireService) { }
 
   async ngOnInit() {
 

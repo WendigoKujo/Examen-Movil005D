@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ValidacionesService } from 'src/app/services/validaciones.service';
 import { v4 } from 'uuid';
@@ -34,7 +33,7 @@ export class RegistroPage implements OnInit {
   KEY_PERSONAS = 'personas';
   v_registrar: boolean = false;
 
-  constructor(private usuarioService: UsuarioService, private router: Router, private toastController: ToastController, private validaciones: ValidacionesService, private storage: StorageService, private fire: FireService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router, private toastController: ToastController, private validaciones: ValidacionesService, private fire: FireService) { }
 
   async ngOnInit() {
     this.estudiante.controls.id.setValue(v4());
@@ -56,6 +55,8 @@ export class RegistroPage implements OnInit {
   }
 
   registrar(){
+
+    this.v_registrar = true;
 
     var mensaje: string;
 
@@ -105,7 +106,6 @@ export class RegistroPage implements OnInit {
     var registradoFire = this.fire.agregar(this.KEY_PERSONAS, this.estudiante.controls.id.value, this.estudiante.value);
     if (registradoFire) {
       this.tostadaError('Alumno registrado con exito!');
-      this.v_registrar = true;
       this.limpiar();
       this.estudiante.controls.id.setValue(v4());
       this.router.navigate(['/login'])

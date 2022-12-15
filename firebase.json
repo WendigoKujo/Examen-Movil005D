@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "./public/index",
+    "site": "examen-movil-005d",
+    "public": "www",
     "ignore": [
       "firebase.json",
       "**/.*",

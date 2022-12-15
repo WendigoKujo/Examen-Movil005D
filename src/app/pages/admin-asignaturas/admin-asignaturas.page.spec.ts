@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { RouterTestingModule } from "@angular/router/testing";
 import { environment } from 'src/environments/environment';
 
 import { AdminAsignaturasPage } from './admin-asignaturas.page';
@@ -12,7 +12,8 @@ describe('PRUEBA UNITARIAS: Admin-Asignaturas', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        RouterTestingModule
       ],
       declarations: [
         AdminAsignaturasPage
@@ -35,7 +36,7 @@ describe('PRUEBA UNITARIAS: Admin-Asignaturas', ()=>{
     let id = app.asignatura.controls['id'];
     id.setValue('7aee1f22-256e-43ad-941a-f65323a268f0');
     let nombre_asig = app.asignatura.controls['nombre_asig'];
-    nombre_asig.setValue('Programacion De Base De Datos');
+    nombre_asig.setValue('Prog');
     let sigla = app.asignatura.controls['sigla'];
     sigla.setValue('MDY3121');
     let profesor = app.asignatura.controls['profesor'];

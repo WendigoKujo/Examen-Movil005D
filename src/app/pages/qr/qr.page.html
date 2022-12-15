@@ -24,11 +24,11 @@
             </ion-select>
           </ion-item>
 
-          <ion-button *ngIf="this.clase.controls.codigo_asig.value != ''" color="warning" type="submit" [disabled]="!clase.valid">Iniciar Clase</ion-button>
+          <ion-button color="warning" type="submit" [disabled]="!clase.valid">Iniciar Clase</ion-button>
 
           <div class="qr">
 
-            <ngx-qrcode [elementType]="elementType" [value]="this.clase.controls.id.value"></ngx-qrcode>
+            <ngx-qrcode [elementType]="elementType" [value]="qr"></ngx-qrcode>
 
           </div>
 

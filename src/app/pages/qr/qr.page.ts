@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { FireService } from 'src/app/services/fire.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
 
 @Component({
@@ -15,6 +14,7 @@ export class QrPage implements OnInit {
 
   //Variables para general el QR;
   elementType = 'canvas';
+  qr = '';
   KEY_ASIGNATURAS = 'asignaturas';
   KEY_PERSONAS = 'personas';
   KEY_CLASES = 'clases'
@@ -34,7 +34,7 @@ export class QrPage implements OnInit {
 
   });
 
-  constructor(private storageService: StorageService, private activatedRoute: ActivatedRoute, private toastController: ToastController, private fire: FireService) { }
+  constructor(private activatedRoute: ActivatedRoute, private toastController: ToastController, private fire: FireService) { }
 
   async ngOnInit() {
 
@@ -86,9 +86,10 @@ export class QrPage implements OnInit {
         this.tostadaError('Solo se puede crear una clase por dia!');
         return;
       }
-    }
+    };
 
     this.clase.controls.id.setValue(v4());
+    this.qr = this.clase.controls.id.value;
     this.clase.controls.codigo_asig.setValue(id_asignatura);
     this.fire.agregar(this.KEY_CLASES, this.clase.controls.id.value, this.clase.value);
     this.v_registrar = true;

@@ -1,7 +1,7 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
 import { ApiPage } from './api.page';
@@ -12,7 +12,8 @@ describe('PRUEBA UNITARIAS: ApiPage', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        HttpClientModule
       ],
       declarations: [
         ApiPage

@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { ProfesorPage } from './profesor.page';
 
@@ -12,7 +12,8 @@ describe('PRUEBA UNITARIAS: Profesor', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        RouterTestingModule
       ],
       declarations: [
         ProfesorPage

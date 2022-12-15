@@ -35,7 +35,7 @@ describe('Pruebas Unitarias: Login', () => {
 
     let correo = app.estudiante.controls['correo'];
     let password = app.estudiante.controls['password'];
-    correo.setValue('est.saez@duocuc.cl');
+    correo.setValue('est.saez@duocuc.c');
     password.setValue('123123')
 
     expect(app.estudiante.valid).toBeFalse();

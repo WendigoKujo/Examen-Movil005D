@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { RouterTestingModule } from "@angular/router/testing";
 import { environment } from 'src/environments/environment';
-
 import { AsistenciaPage } from './asistencia.page';
 
 describe('PRUEBA UNITARIAS: Asistencia', ()=>{
@@ -12,7 +11,8 @@ describe('PRUEBA UNITARIAS: Asistencia', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        RouterTestingModule
       ],
       declarations: [
         AsistenciaPage

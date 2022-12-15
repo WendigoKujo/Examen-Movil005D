@@ -11,7 +11,6 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './services/auth.guard';
 
 
 
@@ -23,7 +22,7 @@ import { AuthGuard } from './services/auth.guard';
     AppRoutingModule, 
     IonicStorageModule.forRoot(), 
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

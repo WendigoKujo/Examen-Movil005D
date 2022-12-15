@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { QrPage } from './qr.page';
 
@@ -12,7 +13,8 @@ describe('PRUEBA UNITARIAS: QR', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        RouterTestingModule
       ],
       declarations: [
         QrPage
@@ -35,7 +37,7 @@ describe('PRUEBA UNITARIAS: QR', ()=>{
     let id = app.clase.controls['id'];
     id.setValue('7aee1f22-256e-43ad-941a-f65323a268f0');
     let codigo_asig = app.clase.controls['codigo_asig'];
-    codigo_asig.setValue('1aee1f35-156e-12ad-941a-f42123a268f0');
+    codigo_asig.setValue('');
     let fecha = app.clase.controls['fecha'];
     fecha.setValue('2003-01-30');
     let alumnos = app.clase.controls['alumnos'];

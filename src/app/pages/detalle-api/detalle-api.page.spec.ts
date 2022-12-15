@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { DetalleApiPage } from './detalle-api.page';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('PRUEBA UNITARIAS: Detalle-Api', ()=>{
   beforeEach( async ()=>{
@@ -12,7 +13,9 @@ describe('PRUEBA UNITARIAS: Detalle-Api', ()=>{
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        RouterTestingModule,
+        HttpClientModule
       ],
       declarations: [
         DetalleApiPage
